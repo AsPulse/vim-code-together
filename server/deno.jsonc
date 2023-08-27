@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "noUncheckedIndexedAccess": true
+  },
+  "fmt": {
+    "indentWidth": 2,
+    "singleQuote": true
+  },
+  "tasks": {
+    "dev": "deno run --watch mod.ts"
+  }
+}
