@@ -8,6 +8,6 @@
     "singleQuote": true
   },
   "tasks": {
-    "dev": "deno run --watch mod.ts"
+    "dev": "deno run --watch main.ts"
   }
 }

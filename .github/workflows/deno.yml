@@ -1,0 +1,59 @@
+name: deno
+on: [pull_request]
+
+jobs:
+  denops-fmt:
+    runs-on: &runs-on ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - &setup-deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - &fmt
+        name: Run fmt
+        run: deno fmt --check
+
+  denops-lint:
+    runs-on: *runs-on
+    steps:
+      - uses: actions/checkout@master
+      - *setup-deno
+      - &lint
+        name: Run lint
+        run: deno lint --check
+
+  denops-check:
+    runs-on: *runs-on
+    steps:
+      - uses: actions/checkout@master
+      - *setup-deno
+      - name: Run check
+        run: deno check ./denops/plugin/main.ts
+
+  server-fmt:
+    runs-on: *runs-on
+    steps:
+      - uses: actions/checkout@master
+      - &server
+        name: cd to server
+        run: server
+      - *setup-deno
+      - *fmt
+
+  server-lint:
+    runs-on: *runs-on
+    steps:
+      - uses: actions/checkout@master
+      - *server
+      - *setup-deno
+      - *lint
+
+  server-check:
+    runs-on: *runs-on
+    steps:
+      - uses: actions/checkout@master
+      - *server
+      - *setup-deno
+      - name: Run check
+        run: deno check ./main.ts
