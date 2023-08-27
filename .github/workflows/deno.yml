@@ -30,10 +30,11 @@ jobs:
         run: deno check ./denops/plugin/main.ts
   server-fmt:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
     steps:
       - uses: actions/checkout@master
-      - name: cd to server
-        run: cd server
       - uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
@@ -41,10 +42,11 @@ jobs:
         run: deno fmt --check
   server-lint:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
     steps:
       - uses: actions/checkout@master
-      - name: cd to server
-        run: cd server
       - uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
@@ -52,10 +54,11 @@ jobs:
         run: deno lint --check
   server-check:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
     steps:
       - uses: actions/checkout@master
-      - name: cd to server
-        run: cd server
       - uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
