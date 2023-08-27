@@ -1,4 +1,4 @@
-import { Denops, ensure, execute, is } from "../../mod.ts";
+import { Denops, ensure, execute, is } from '../../mod.ts';
 
 export async function main(denops: Denops): Promise<void> {
   // ここに書かれた処理はVimの起動時に行われる。
