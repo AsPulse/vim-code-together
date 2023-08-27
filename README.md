@@ -1,1 +1,1 @@
-# nvim-code-together
+# vim-code-together
